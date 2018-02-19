@@ -5,8 +5,14 @@ import {Route, Link} from 'react-router-dom'
 import Single from './Single'
 
 class Main extends Component {
-    constructor() {
-        super()
+ 
+    state = { loading: true }
+
+    componentDidMount() {
+        this.props.startLoadingPost().then(() => {
+            this.setState({loading: false})
+        })
+        this.props.startLoadingComments()
     }
 
     render() {
@@ -16,6 +22,7 @@ class Main extends Component {
             <h1> 
                 <Link to="/"> Photowall </Link>    
              </h1>
+
             <Route exact path = "/" render={() => (
                  <div>
                       <PhotoWall {...this.props} />   
@@ -27,9 +34,11 @@ class Main extends Component {
                 <AddPhoto {...this.props} onHistory={history}/>
             )}/>
 
-            <Route path="/single/:id" render = {(params) => (
-                <Single  {...this.props} {...params}/> 
+            <Route exact path="/single/:id" render = {(params) => (
+                <Single  loading={this.state.loading} {...this.props} {...params}/> 
             )}/>
+            
+
          </div>
         )
     }
