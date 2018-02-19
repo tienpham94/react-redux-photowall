@@ -33,3 +33,10 @@ h1 a:focus {
 body {
  background: offwhite;
 }
+
+.photoGrid {
+ display: flex;
+ flex-wrap: wrap;
+ max-width: 1000px;
+ margin: 0 auto;
+}
