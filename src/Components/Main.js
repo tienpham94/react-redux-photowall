@@ -3,7 +3,7 @@ import Title from './Title'
 
 class Main extends Component {
   render(){
-    return <Title />
+    return <Title title={'Photowall'}/>
   }
 }
 
