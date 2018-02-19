@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Title from './Title'
 import Photowall from './Photowall'
+import AddPhoto from './AddPhoto'
 
 class Main extends Component {
   constructor(props){
@@ -20,7 +21,8 @@ class Main extends Component {
        id: "2",
        description: "On a vacation!",
        imageLink: "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg"
-       }]
+     }],
+     screen: 'photos'
     };
     this.removePhoto = this.removePhoto.bind(this)
   }
@@ -37,6 +39,11 @@ class Main extends Component {
       <div>
        <Title title={'Photowall'}/>
        <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto} />
+
+      </div>
+
+      <div>
+       <AddPhoto />
       </div>
     )
 
